@@ -6,6 +6,7 @@
 
 <script>
 import EditorsComponent from "./editors/editors.vue";
+
 export default {
   components: {
     EditorsComponent

@@ -29,6 +29,14 @@
           <span class="text">Github</span>
         </a>
       </li>
+
+      <li>
+        <a v-bind:href="'https://github.com/login/oauth/authorize?scope=read:user,gist&client_id=' + clientId">
+          <span class="icon icon-star"></span>
+          <span class="text">Login</span>
+        </a>
+      </li>
+
       <!--
       <li>
         <span class="icon icon-grid"></span>
@@ -54,10 +62,5 @@
   </nav>
 </template>
 
-<script>
-export default {
-  props: ['sourceType']
-};
-</script>
-
+<script src="./nav.js"></script>
 <style scoped lang="scss" src="./nav.scss"></style>
