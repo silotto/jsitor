@@ -3,7 +3,13 @@ import HTMLEditorComponent from "./html/html.vue";
 import CSSEditorComponent from "./css/css.vue";
 import OutputEditorComponent from "./output/output.vue";
 import NavComponent from "./nav/nav.vue";
-import { EventBus } from '../event-bus.js';
+import {
+  EventBus
+} from '../event-bus.js';
+
+import {
+  LOCAL_STORAGE_KEY
+} from "../../consts";
 
 //CodeMirror imports - modes
 import "codemirror/mode/css/css.js";
@@ -27,6 +33,8 @@ import "codemirror/addon/hint/css-hint.js";
 //CodeMirror themes
 import "codemirror/addon/hint/show-hint.css";
 import "codemirror/theme/material.css";
+
+import GithubApi from '../../services/github';
 
 const STORAGE = {
   JS: "js",
@@ -57,11 +65,13 @@ export default {
     this.js = localStorage.getItem(STORAGE.JS);
     this.css = localStorage.getItem(STORAGE.CSS);
     this.html = localStorage.getItem(STORAGE.HTML);
+
+    this.initGit();
   },
 
   methods: {
 
-    onRunClicked(){
+    onRunClicked() {
       EventBus.$emit('run');
     },
 
@@ -86,6 +96,18 @@ export default {
 
     onShrinkClicked() {
       this.expandSourceType = "";
+    },
+
+    initGit() {
+      let githubAuthCode = window.location.search.split("=")[1];
+
+      if (githubAuthCode) {
+        localStorage.setItem(LOCAL_STORAGE_KEY.AUTH_CODE, githubAuthCode);
+
+        GithubApi.login(githubAuthCode).then(res => {
+          console.log(res);
+        });
+      }
     }
   }
 };

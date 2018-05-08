@@ -6,7 +6,7 @@
     <NavComponent :sourceType="expandSourceType" @onSourceTypeChange="onExpandClicked" @onRunClicked="onRunClicked">
     </NavComponent>
     <div class="editors-content" :class="expandSourceType">
-    <Split ref="split1" :gutterSize="2" @onDragEnd="onDragEnd">
+    <Split ref="split1" :gutterSize="2">
       <SplitArea :size="50">
         <Split :gutterSize="2" direction="vertical">
           <SplitArea :size="50" :minSize="150">
