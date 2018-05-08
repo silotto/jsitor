@@ -14,7 +14,7 @@ export const EDITOR_OPTIONS = {
   extraKeys: {
     'Ctrl-Space': 'autocomplete',
     "Cmd-/": "toggleComment",
-    "Ctrl-/": "toggleComment",
+    "Ctrl-/": "toggleComment"
   }
 }
 

@@ -18,7 +18,7 @@ class Github {
       mode: 'no-cors',
       headers: new Headers({
         'X-Platform-Version': 1,
-        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       })
     });

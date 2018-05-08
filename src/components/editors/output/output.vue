@@ -11,39 +11,35 @@
 </template>
 
 <script>
-import { EventBus } from '../../event-bus';
+import { EventBus } from "../../event-bus";
 
 export default {
   props: ["css", "js", "html", "expandSourceType"],
 
   mounted() {
-    this.iframeContainer = document.getElementById('iframe-container');
+    this.iframeContainer = document.getElementById("iframe-container");
   },
 
-  created(){
-    EventBus.$on('run', clickCount => {
+  created() {
+    EventBus.$on("run", clickCount => {
       this.write();
     });
   },
 
   methods: {
-    write(){
-
+    write() {
       let iframeSource = `<iframe id="iframe-output"></iframe>`;
       this.iframeContainer.innerHTML = iframeSource;
 
-      this.source = '';
-      this.source += `<style>${this.css || ''}<\/style>`;
-      this.source += this.html || '';
-      this.source += `<script>${this.js || ''}<\/script>`;
+      this.source = "";
+      this.source += `<style>${this.css || ""}<\/style>`;
+      this.source += this.html || "";
+      this.source += `<script>${this.js || ""}<\/script>`;
 
-      let window = document.getElementById(
-        "iframe-output"
-      ).contentWindow;
+      let window = document.getElementById("iframe-output").contentWindow;
       window.document.open();
       window.document.write(this.source);
       window.document.close();
-
     }
   }
 };
@@ -51,7 +47,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-#iframe-container{
+#iframe-container {
   height: 100%;
   width: 100%;
 }
